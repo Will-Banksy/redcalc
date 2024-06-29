@@ -1,7 +1,7 @@
 Red [
 	Title: "redcalc"
 	Version: 0.1
-	Author: "Will Banks"
+	Author: "Will B."
 ]
 
 ; Includes
@@ -11,19 +11,25 @@ do %eval.red
 ; Main evaluation loop
 forever [
 	input-str: ask ">>> "
-	print input-str
 
 	if input-str == "q" [ ; Interestingly "ask" seems to convert EOF (Ctrl+D) into "q"
 		break
 	]
 
-	scope: parse input-str [
-		expr
+	valid: parse input-str [
+		calculation
 	]
 
-	probe scope
+	unless valid [
+		print "Syntax Error: Please refer to documentation or parse grammar for syntax"
+		continue
+	]
 
-	result: eval-expr scope
-	prin "= "
-	probe result
+	result: catch [ eval-expr scope ]
+	either (type? result) == string! [
+		print result
+	] [
+		prin "= "
+		probe result
+	]
 ]

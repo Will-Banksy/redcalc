@@ -18,9 +18,10 @@ infix-ops-3: charset "-+"
 
 ; args: [ expr any [ "," expr ] ]
 
-z: [ keep literal | "(" wo expr wo ")" | keep fn-ident "(" wo expr wo ")" ]
+z: [ keep literal | "(" wo expr wo ")" | collect [ keep fn-ident "(" wo expr wo ")" ] ]
 y: [ opt [ keep prefix-ops ] z opt [ keep postfix-ops ] ]
 x: [ collect y wo opt [ keep infix-ops-1 wo x ] ]
 w: [ collect x wo opt [ keep infix-ops-2 wo w ] ]
 v: [ collect w wo opt [ keep infix-ops-3 wo v ] ]
 expr: [ collect v ]
+calculation: [ collect set scope [ expr ] ]

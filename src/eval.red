@@ -10,12 +10,25 @@ unwrap: func [e] [
 	]
 	return e
 ]
+factorial: func [n] [
+	res: n
+	i: n - 1
+	while [ i > 0 ] [
+		res: res * i
+		i: i - 1
+	]
+	return res
+]
 
 eval-func: func [fn-ident arg] [
-	switch fn-ident [
+	switch/default fn-ident [
 		"sin" [ return sin arg ]
 		"cos" [ return cos arg ]
 		"tan" [ return tan arg ]
+		"abs" [ return absolute arg ]
+		; TODO: Complete set of mathematical functions
+	] [
+		throw append append "Eval Error: Function " fn-ident " does not exist"
 	]
 ]
 eval-infix-op: func [op arg1 arg2] [
@@ -34,7 +47,7 @@ eval-prefix-op: func [op arg] [
 ]
 eval-postfix-op: func [arg op] [
 	return switch op [
-		#"!" [ arg * 2 ] ; TODO: Implement factorial
+		#"!" [ factorial arg ]
 	]
 ]
 eval-literal: func [e] [
@@ -69,13 +82,13 @@ eval-y: func [e] [
 	; prin "eval-y: " probe e
 	if (type? e) == block! [
 		if (e/1 == #"-") and (e/3 == #"!") [
-			return eval-prefix-op e/1 eval-postfix-op eval-z e/2 e/3
+			return eval-prefix-op e/1 eval-postfix-op eval-expr e/2 e/3
 		]
 		if e/1 == #"-" [
-			return eval-prefix-op e/1 eval-z e/2
+			return eval-prefix-op e/1 eval-expr e/2
 		]
 		if e/2 == #"!" [
-			return eval-postfix-op eval-z e/1 e/2
+			return eval-postfix-op eval-expr e/1 e/2
 		]
 	]
 	return eval-z e
