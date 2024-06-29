@@ -17,7 +17,7 @@ Alternatively you can just run:
 <path_to_red> src/main.red
 ```
 
-This will start the redcalc REPL.
+This will start the redcalc REPL. To quit the REPL, enter "q" or use Ctrl+D/Ctrl+C on compatible terminals.
 
 ## Docs
 
