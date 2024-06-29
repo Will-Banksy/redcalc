@@ -9,7 +9,12 @@ It should work, but has not been extensively tested.
 To run the script, run `make`, supplying the path to the `red` interpreter executable (get [here](https://www.red-lang.org/p/download.html)), e.g.:
 
 ```bash
-make RED=../tools/red
+make RED=<path_to_red>
+```
+
+Alternatively you can just run:
+```
+<path_to_red> src/main.red
 ```
 
 This will start the redcalc REPL.
@@ -29,8 +34,8 @@ Note that redcalc is not capable of displaying fine-grained syntax errors - Curr
 = -15.0
 >>> 2 ^ -8
 = 0.00390625
->>> 4 + 8 / 2
-= 8.0
+>>> 8 % 3 + 1
+= 3.0
 ```
 
 ### Numbers
@@ -48,7 +53,7 @@ Numbers are 64-bit floating point, and can be expressed in scientific notation.
 
 Operators are either infix (`x + y`), postfix (`x!`) or prefix (`-x`).
 
-Precedence follows usual rules - Postfix/prefix operators have the highest precedence, followed by the infix operators in order: ^, then */, then +-. Brackets can override precedence, as well as grouping expressions.
+Precedence follows usual rules - Postfix/prefix operators have the highest precedence, followed by the infix operators in order: `^`, then `*/%`, then `+-`. Brackets can override precedence, as well as grouping expressions.
 
 Infix operators:
 
@@ -59,6 +64,7 @@ Infix operators:
 | `*`      | Multiplication |
 | `/`      | Division       |
 | `^`      | Exponentiation |
+| `%`      | Modulus        |
 
 Postfix operators:
 

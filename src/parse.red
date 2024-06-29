@@ -13,7 +13,7 @@ prefix-ops: charset "-"
 ; expr: [ collect [ opt [ keep prefix-ops ] wo [ keep literal | "(" expr ")" | expr ] opt [ keep postfix-ops ] wo opt [ keep infix-ops wo expr ] wo opt [ keep postfix-ops ] ] ]
 
 infix-ops-1: charset "^^"
-infix-ops-2: charset "/*"
+infix-ops-2: charset "/*%"
 infix-ops-3: charset "-+"
 
 ; args: [ expr any [ "," expr ] ]

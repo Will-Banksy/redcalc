@@ -37,6 +37,7 @@ eval-infix-op: func [op arg1 arg2] [
 		#"-" [ arg1 - arg2 ]
 		#"/" [ arg1 / arg2 ]
 		#"*" [ arg1 * arg2 ]
+		#"%" [ arg1 % arg2 ]
 		#"^^" [ arg1 ** arg2 ]
 	]
 ]
@@ -107,7 +108,7 @@ eval-w: func [e] [
 	e: unwrap e
 	; prin "eval-w: " probe e
 	if (type? e) == block! [
-		if (e/2 == #"/") or (e/2 == #"*") [
+		if (e/2 == #"/") or (e/2 == #"*") or (e/2 == #"%") [
 			return eval-infix-op e/2 eval-expr e/1 eval-expr at e 3
 		]
 	]
