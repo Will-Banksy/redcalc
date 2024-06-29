@@ -1,12 +1,12 @@
 # redcalc
 
-A CLI calculator REPL written in Red, utilising the parse dialect (DSL) for expression parsing.
+A CLI calculator REPL written in [Red](https://www.red-lang.org/), utilising the [parse](https://www.red-lang.org/2013/11/041-introducing-parse.html) dialect (DSL) for expression parsing.
 
 It should work, but has not been extensively tested.
 
 ## Usage
 
-To run the script, run `make`, supplying the path to the `red` interpreter executable, e.g.:
+To run the script, run `make`, supplying the path to the `red` interpreter executable (get [here](https://www.red-lang.org/p/download.html)), e.g.:
 
 ```bash
 make RED=../tools/red
