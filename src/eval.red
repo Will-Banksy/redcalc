@@ -68,8 +68,8 @@ eval-z: func [e] [
 		]
 		e_type == block! [ ; e/1 Could be either an ident or number
 			either error? result: try [ eval-literal e/1 ] [
-				ident: e/1
 				arg: eval-expr e/2
+				ident: e/1
 				return eval-func ident arg
 			] [
 				return result

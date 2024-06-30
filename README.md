@@ -36,6 +36,8 @@ Note that redcalc is not capable of displaying fine-grained syntax errors - Curr
 = 0.00390625
 >>> 8 % 3 + 1
 = 3.0
+>>> sin(cos(tan(0)))
+= 0.8414709848078965
 ```
 
 ### Numbers

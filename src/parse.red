@@ -7,10 +7,8 @@ digit: charset "0123456789"
 literal: [ some digit opt [ "." some digit ] opt [ [ "e" | "E" ] some digit ] ]
 alph: charset [#"a" - #"z" #"A" - #"Z"]
 fn-ident: [ some [ alph | "_" ] ]
-; infix-ops: charset "-+/*^^"
 postfix-ops: charset "!"
 prefix-ops: charset "-"
-; expr: [ collect [ opt [ keep prefix-ops ] wo [ keep literal | "(" expr ")" | expr ] opt [ keep postfix-ops ] wo opt [ keep infix-ops wo expr ] wo opt [ keep postfix-ops ] ] ]
 
 infix-ops-1: charset "^^"
 infix-ops-2: charset "/*%"
